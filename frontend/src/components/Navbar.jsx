@@ -28,6 +28,15 @@ export default function Navbar() {
 
         {/* Navigation Links */}
         <nav className="flex items-center gap-5 sm:gap-7 text-sm">
+          <NavLink to="/" end className={navClass}>
+            {({ isActive }) => (
+              <>
+                home
+                <span className={`absolute left-0 -bottom-1 h-[2px] bg-gold-400 transition-all duration-300 rounded-full ${isActive ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
+              </>
+            )}
+          </NavLink>
+
           <NavLink to="/products" className={navClass}>
             {({ isActive }) => (
               <>
