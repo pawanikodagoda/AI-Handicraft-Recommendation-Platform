@@ -4,6 +4,28 @@ import { getRecommendations, getStats, listCategories, listFilters } from '../ap
 import ProductCard from '../components/ProductCard'
 import { useAuth } from '../context/AuthContext'
 
+function AnimatedCounter({ value }) {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    let startTimestamp = null;
+    const duration = 2000; // 2 seconds
+    const step = (timestamp) => {
+      if (!startTimestamp) startTimestamp = timestamp;
+      const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+      // easeOutExpo for smoother animation
+      const easeProgress = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+      setCount(Math.floor(easeProgress * value));
+      
+      if (progress < 1) {
+        window.requestAnimationFrame(step);
+      }
+    };
+    window.requestAnimationFrame(step);
+  }, [value]);
+
+  return <>{count}</>;
+}
 const FEATURES = [
   {
     icon: 'fa-tags',
@@ -160,7 +182,9 @@ export default function Home() {
                 [stats.categories, 'Collections'],
               ].map(([value, label]) => (
                 <div key={label} className="group cursor-default">
-                  <p className="font-display text-4xl text-white/90 group-hover:text-gold-400 transition-colors duration-500">{value}</p>
+                  <p className="font-display text-4xl text-white/90 group-hover:text-gold-400 transition-colors duration-500">
+                    <AnimatedCounter value={value} />
+                  </p>
                   <p className="text-[9px] font-bold tracking-[0.3em] uppercase text-white/50 mt-2 group-hover:text-white/80 transition-colors duration-500">{label}</p>
                 </div>
               ))}
