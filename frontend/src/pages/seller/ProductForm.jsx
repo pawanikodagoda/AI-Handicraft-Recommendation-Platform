@@ -19,7 +19,7 @@ export default function ProductForm({ mode }) {
   const [price, setPrice] = useState('')
   const [stock, setStock] = useState('1')
   const [images, setImages] = useState([])
-  const [braceletImage, setBraceletImage] = useState(null)
+
   const [existingImages, setExistingImages] = useState([])
   const [currentStatus, setCurrentStatus] = useState('draft')
   
@@ -120,24 +120,6 @@ export default function ProductForm({ mode }) {
     }
   }
 
-  async function handleBraceletPicked(file) {
-    if (!file) return setBraceletImage(null)
-    if (file.type !== 'image/png') {
-      setError('The try-on cutout must be a PNG image.')
-      return
-    }
-
-    setError('')
-    setPreparing(true)
-    try {
-      setBraceletImage(await compressImage(file))
-    } catch {
-      setError('This cutout could not be prepared. Please choose another PNG image.')
-    } finally {
-      setPreparing(false)
-    }
-  }
-
   async function handleSubmit(e, status) {
     e.preventDefault()
     if (!title.trim() || !description.trim() || price === '') {
@@ -159,7 +141,7 @@ export default function ProductForm({ mode }) {
       colors.forEach((c) => formData.append('colors[]', c))
       styleTags.forEach((s) => formData.append('style_tags[]', s))
       images.forEach((img) => formData.append('images[]', img))
-      if (braceletImage) formData.append('bracelet_image', braceletImage)
+
 
       if (isEdit) await updateProduct(id, formData)
       else await createProduct(formData)
@@ -332,23 +314,6 @@ export default function ProductForm({ mode }) {
                   {images.length} photo(s) ready to upload.
                 </p>
               )}
-            </div>
-
-            <div className="border-t border-line/60 pt-6 mt-4">
-              <label htmlFor="product-bracelet-image" className="mb-1.5 block text-sm font-medium text-brand-800">
-                Try-on cutout <span className="font-normal text-wood/70">(optional)</span>
-              </label>
-              <p className="mb-3 text-xs text-wood/80">
-                A transparent PNG of just the bracelet gives the best virtual try-on result.
-              </p>
-              <input
-                id="product-bracelet-image"
-                type="file"
-                accept="image/png"
-                onChange={(e) => handleBraceletPicked(e.target.files?.[0] || null)}
-                disabled={preparing || submitting}
-                className="w-full text-sm text-wood file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-gold-100 file:text-gold-600 hover:file:bg-gold-200 transition-colors"
-              />
             </div>
 
             {error && (
