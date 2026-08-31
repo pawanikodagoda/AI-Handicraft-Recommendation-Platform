@@ -1,5 +1,4 @@
 import { Route, Routes } from 'react-router-dom'
-import BackgroundDecor from './components/BackgroundDecor'
 import Footer from './components/Footer'
 import Navbar from './components/Navbar'
 import ProtectedRoute from './components/ProtectedRoute'
@@ -19,7 +18,6 @@ import SellerDashboard from './pages/seller/SellerDashboard'
 export default function App() {
   return (
     <div className="relative flex min-h-screen flex-col">
-      <BackgroundDecor />
       <Navbar />
       <main className="relative z-10 flex-1">
         <Routes>
