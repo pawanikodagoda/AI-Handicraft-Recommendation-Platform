@@ -40,7 +40,7 @@ export default function Onboarding() {
 
   return (
     <div className="mx-auto max-w-2xl px-4 py-12">
-      <h1 className="font-display text-4xl font-semibold text-brand-600">what's your style?</h1>
+      <h1 className="font-display text-4xl font-semibold text-brand-800 capitalize tracking-wide">What's Your Style?</h1>
       <p className="mt-2 text-wood/80">
         A few quick questions so we can match you with pieces you'll love. You can skip this anytime.
       </p>

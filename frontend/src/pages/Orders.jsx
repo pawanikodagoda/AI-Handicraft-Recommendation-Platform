@@ -21,7 +21,7 @@ export function OrderList() {
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-10">
-      <h1 className="font-display text-4xl font-semibold text-brand-600">your orders</h1>
+      <h1 className="font-display text-4xl font-semibold text-brand-800 capitalize tracking-wide">Your Orders</h1>
 
       {orders.length === 0 ? (
         <div className="surface r-organic mt-8 p-12 text-center">

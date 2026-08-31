@@ -33,7 +33,7 @@ export default function Register() {
   return (
     <div className="mx-auto max-w-md px-4 py-16">
       <div className="surface r-organic-lg p-9">
-        <h1 className="font-display text-3xl font-semibold text-brand-600">join the hub</h1>
+        <h1 className="font-display text-3xl font-semibold text-brand-800 capitalize tracking-wide">Join The Hub</h1>
         <p className="mt-1 text-sm text-wood/75">Buy handmade, or start selling your own.</p>
 
         <form onSubmit={handleSubmit} className="mt-7 space-y-4">

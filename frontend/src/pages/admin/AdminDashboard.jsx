@@ -21,7 +21,7 @@ export default function AdminDashboard() {
 
   return (
     <div className="mx-auto max-w-5xl px-4 py-10">
-      <h1 className="font-display text-4xl font-semibold text-brand-600">admin</h1>
+      <h1 className="font-display text-4xl font-semibold text-brand-800 capitalize tracking-wide">Admin Dashboard</h1>
 
       {stats && (
         <div className="mt-7 grid grid-cols-2 gap-5 sm:grid-cols-4">
@@ -32,7 +32,7 @@ export default function AdminDashboard() {
         </div>
       )}
 
-      <h2 className="mt-12 font-display text-2xl font-semibold text-brand-700">all listings</h2>
+      <h2 className="mt-12 font-display text-2xl font-semibold text-brand-800 capitalize tracking-wide">All Listings</h2>
       {!products ? (
         <p className="mt-4 text-brand-400">Loading...</p>
       ) : (

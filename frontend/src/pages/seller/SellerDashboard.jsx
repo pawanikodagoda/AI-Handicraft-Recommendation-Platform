@@ -27,7 +27,7 @@ export default function SellerDashboard() {
   return (
     <div className="mx-auto max-w-5xl px-4 py-10">
       <div className="flex flex-wrap items-center justify-between gap-4">
-        <h1 className="font-display text-4xl font-semibold text-brand-600">my shop</h1>
+        <h1 className="font-display text-4xl font-semibold text-brand-800 capitalize tracking-wide">My Shop</h1>
         <Link to="/seller/products/new" className="btn-primary">
           <i aria-hidden="true" className="fa-solid fa-plus" /> Add product
         </Link>
