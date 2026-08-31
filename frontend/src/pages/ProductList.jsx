@@ -9,6 +9,7 @@ export default function ProductList() {
   const [facets, setFacets] = useState({ materials: [], colors: [], price_min: 0, price_max: 0 })
   const [result, setResult] = useState({ data: [], current_page: 1, last_page: 1 })
   const [loading, setLoading] = useState(true)
+  const [isSortOpen, setIsSortOpen] = useState(false)
 
   const q = searchParams.get('q') || ''
   const category = searchParams.get('category') || ''
@@ -89,6 +90,13 @@ export default function ProductList() {
     setSearchParams(new URLSearchParams())
   }
 
+  const sortOptions = [
+    { value: 'latest', label: 'Newest' },
+    { value: 'price_asc', label: 'Price: Low to High' },
+    { value: 'price_desc', label: 'Price: High to Low' },
+  ]
+  const currentSortOption = sortOptions.find(o => o.value === sort) || sortOptions[0]
+
   return (
     <div className="mx-auto max-w-6xl px-4 py-10">
       <h1 className="mb-6 font-display text-4xl font-semibold text-brand-800 capitalize tracking-wide">The Shop</h1>
@@ -104,15 +112,40 @@ export default function ProductList() {
             className="field !pl-10 text-sm"
           />
         </div>
-        <select
-          value={sort}
-          onChange={(e) => updateParam('sort', e.target.value)}
-          className="field !w-auto text-sm"
+        <div 
+          className="relative"
+          tabIndex={0}
+          onBlur={(e) => {
+            if (!e.currentTarget.contains(e.relatedTarget)) {
+              setIsSortOpen(false)
+            }
+          }}
         >
-          <option value="latest">Newest</option>
-          <option value="price_asc">Price: Low to High</option>
-          <option value="price_desc">Price: High to Low</option>
-        </select>
+          <button
+            onClick={() => setIsSortOpen(!isSortOpen)}
+            className="field !w-auto text-sm flex items-center justify-between gap-6 min-w-[170px] bg-white cursor-pointer select-none"
+          >
+            <span className="font-medium text-brand-800">{currentSortOption.label}</span>
+            <i aria-hidden="true" className={`fa-solid fa-chevron-down text-brand-500 transition-transform duration-300 ${isSortOpen ? 'rotate-180' : ''}`}></i>
+          </button>
+          
+          {isSortOpen && (
+            <div className="absolute top-full mt-2 right-0 w-full min-w-[180px] bg-white border border-brand-100 shadow-xl rounded-xl py-1 z-50 overflow-hidden origin-top">
+              {sortOptions.map(option => (
+                <button
+                  key={option.value}
+                  onClick={() => {
+                    updateParam('sort', option.value)
+                    setIsSortOpen(false)
+                  }}
+                  className={`w-full text-left px-4 py-2.5 text-sm transition-colors hover:bg-gold-50 hover:text-gold-700 ${sort === option.value ? 'bg-gold-50 text-gold-700 font-semibold' : 'text-brand-800 font-medium'}`}
+                >
+                  {option.label}
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
       </div>
 
       <div className="grid grid-cols-1 gap-8 md:grid-cols-[230px_1fr]">
