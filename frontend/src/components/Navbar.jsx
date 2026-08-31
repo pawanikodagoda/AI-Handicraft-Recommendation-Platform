@@ -30,19 +30,21 @@ export default function Navbar() {
         <nav className="flex items-center gap-5 sm:gap-7 text-sm">
           <NavLink to="/" end className={navClass}>
             {({ isActive }) => (
-              <>
+              <span className="flex items-center gap-1.5">
+                <i aria-hidden="true" className={`fa-solid fa-house-chimney ${isActive ? 'text-gold-500' : 'text-wood/60 group-hover:text-gold-500 group-hover:-translate-y-0.5 transition-all duration-300'}`} />
                 home
                 <span className={`absolute left-0 -bottom-1 h-[2px] bg-gold-400 transition-all duration-300 rounded-full ${isActive ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
-              </>
+              </span>
             )}
           </NavLink>
 
           <NavLink to="/products" className={navClass}>
             {({ isActive }) => (
-              <>
+              <span className="flex items-center gap-1.5">
+                <i aria-hidden="true" className={`fa-solid fa-gem ${isActive ? 'text-gold-500' : 'text-wood/60 group-hover:text-gold-500 group-hover:-translate-y-0.5 transition-all duration-300'}`} />
                 shop
                 <span className={`absolute left-0 -bottom-1 h-[2px] bg-gold-400 transition-all duration-300 rounded-full ${isActive ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
-              </>
+              </span>
             )}
           </NavLink>
 
@@ -70,10 +72,11 @@ export default function Navbar() {
               </NavLink>
               <NavLink to="/orders" className={navClass}>
                 {({ isActive }) => (
-                  <>
+                  <span className="flex items-center gap-1.5">
+                    <i aria-hidden="true" className={`fa-solid fa-box-open ${isActive ? 'text-gold-500' : 'text-wood/60 group-hover:text-gold-500 group-hover:-translate-y-0.5 transition-all duration-300'}`} />
                     orders
                     <span className={`absolute left-0 -bottom-1 h-[2px] bg-gold-400 transition-all duration-300 rounded-full ${isActive ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
-                  </>
+                  </span>
                 )}
               </NavLink>
             </>
