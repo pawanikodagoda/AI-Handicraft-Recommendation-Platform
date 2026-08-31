@@ -256,17 +256,17 @@ export default function Home() {
 
             {validMaterials.length > 0 && (
               <div>
-                <h2 className="mb-6 font-display text-2xl font-semibold text-brand-800 uppercase tracking-widest flex items-center gap-3">
+                <h2 className="mb-6 font-display text-2xl font-semibold text-brand-800 uppercase tracking-widest flex items-center justify-center gap-3">
                   <i aria-hidden="true" className="fa-solid fa-layer-group text-gold-500 text-lg"></i> Shop by Material
                 </h2>
-                <div className="grid grid-cols-2 lg:grid-cols-3 gap-3">
+                <div className="flex flex-wrap justify-center gap-3">
                   {validMaterials.map((m) => {
                     const style = PREMIUM_MATERIALS[m.toLowerCase()]
                     return (
                       <Link
                         key={m}
                         to={`/products?materials=${encodeURIComponent(m)}`}
-                        className="flex items-center gap-3 p-3 rounded-2xl bg-white border border-brand-100 shadow-sm hover:shadow-md hover:border-gold-300 transition-all duration-300 group"
+                        className="flex items-center gap-3 p-3 rounded-2xl bg-white border border-brand-100 shadow-sm hover:shadow-md hover:border-gold-300 transition-all duration-300 group w-40"
                       >
                         <div className={`w-10 h-10 shrink-0 rounded-full flex items-center justify-center border transition-colors ${style.bg} ${style.color} group-hover:bg-gold-50 group-hover:border-gold-200 group-hover:text-gold-500`}>
                            <i aria-hidden="true" className={`fa-solid ${style.icon}`}></i>
