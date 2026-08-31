@@ -238,7 +238,7 @@ export default function Home() {
             
             {validColors.length > 0 && (
               <div>
-                <h2 className="mb-6 font-display text-2xl font-semibold text-brand-800 uppercase tracking-widest flex items-center justify-center gap-3">
+                <h2 className="mb-6 font-display text-3xl font-semibold text-brand-800 uppercase tracking-widest flex items-center justify-center gap-3">
                   <i aria-hidden="true" className="fa-solid fa-palette text-gold-500 text-lg"></i> Shop by Colour
                 </h2>
                 <div className="flex flex-wrap justify-center gap-6 pb-8">
@@ -258,7 +258,7 @@ export default function Home() {
 
             {validMaterials.length > 0 && (
               <div>
-                <h2 className="mb-6 font-display text-2xl font-semibold text-brand-800 uppercase tracking-widest flex items-center justify-center gap-3">
+                <h2 className="mb-6 font-display text-3xl font-semibold text-brand-800 uppercase tracking-widest flex items-center justify-center gap-3">
                   <i aria-hidden="true" className="fa-solid fa-layer-group text-gold-500 text-lg"></i> Shop by Material
                 </h2>
                 <div className="flex flex-wrap justify-center gap-3">
