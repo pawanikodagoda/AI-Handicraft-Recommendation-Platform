@@ -221,7 +221,7 @@ export default function Home() {
                     <i aria-hidden="true" className={`fa-solid ${CATEGORY_ICONS[c.name] || 'fa-gem'} text-gold-200`} />
                     <p className="mt-1 font-display text-2xl font-semibold">{c.name}s</p>
                     <p className="text-sm text-cream/85">
-                      {inCategory.length} {inCategory.length === 1 ? 'piece' : 'pieces'}
+                      {c.products_count || 0} {(c.products_count || 0) === 1 ? 'piece' : 'pieces'}
                     </p>
                   </div>
                 </Link>
