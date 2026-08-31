@@ -1,0 +1,263 @@
+@import "tailwindcss";
+
+@theme {
+  /* Deep Luxury Base — primary brand voice */
+  --color-brand-50: #e8eae9;
+  --color-brand-100: #c6ccca;
+  --color-brand-200: #a0aba8;
+  --color-brand-300: #7b8b86;
+  --color-brand-400: #5c6f69;
+  --color-brand-500: #3e534d;
+  --color-brand-600: #2f423d;
+  --color-brand-700: #233430;
+  --color-brand-800: #1a2c28;
+  --color-brand-900: #122620;
+
+  /* Gold — accent, highlights, active states */
+  --color-gold-100: #fbf5e6;
+  --color-gold-200: #f2e1b3;
+  --color-gold-300: #e9c97b;
+  --color-gold-400: #D6AD60;
+  --color-gold-500: #868D40;
+
+  /* Warm neutral surfaces */
+  --color-cream: #F4EBD0;
+  --color-sand: #e6dfc6;
+  --color-line: #d1c8aa;
+  --color-earth: #1b1a18;
+  --color-wood: #3a3731;
+
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-display: "Fraunces", ui-serif, Georgia, serif;
+
+  --shadow-soft: 20px 20px 40px rgba(0, 0, 0, 0.08);
+  --shadow-lift: 30px 30px 50px rgba(0, 0, 0, 0.15);
+}
+
+body {
+  background: var(--color-cream);
+  color: var(--color-earth);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+/* Fine paper grain over the whole page, so the flat cream reads as a
+   material rather than a colour fill. */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  /* base64 rather than percent-encoded: the CSS minifier chokes on the
+     escaped % and # inside a utf8 data URI. */
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgMjAwIiBvcGFjaXR5PSIwLjA1Ij48ZmlsdGVyIGlkPSJuIj48ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1ZW5jeT0iMC45IiBudW1PY3RhdmVzPSI0Ii8+PC9maWx0ZXI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsdGVyPSJ1cmwoI24pIi8+PC9zdmc+");
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* --- Decorative floating shapes ------------------------------------ */
+
+/* Kept soft and low-contrast: these drift behind real UI, so they read
+   as an ambient wash of brand colour rather than objects competing with
+   the content sitting on top of them. */
+.floating-3d {
+  position: fixed;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.35;
+  filter: blur(2px) drop-shadow(0 20px 15px rgba(0, 0, 0, 0.15));
+  animation: float3d 12s infinite alternate ease-in-out;
+}
+
+@keyframes float3d {
+  0% {
+    transform: translateY(0) rotateX(0deg) rotateY(0deg) scale(1);
+  }
+  50% {
+    transform: translateY(-35px) rotateX(15deg) rotateY(10deg) scale(1.1);
+  }
+  100% {
+    transform: translateY(0) rotateX(0deg) rotateY(0deg) scale(1);
+  }
+}
+
+@keyframes spin-ring {
+  from {
+    transform: rotate(0deg) scale(1);
+  }
+  to {
+    transform: rotate(360deg) scale(1.05);
+  }
+}
+
+@keyframes gentle-rotate {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(5deg) scale(1.04);
+  }
+  100% {
+    transform: rotate(-5deg) scale(1);
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-spin-ring {
+  animation: spin-ring 12s linear infinite;
+}
+.animate-gentle-rotate {
+  animation: gentle-rotate 8s infinite alternate ease-in-out;
+}
+.animate-fade-up {
+  animation: fade-up 0.7s ease-out both;
+}
+
+@keyframes slow-zoom {
+  from { transform: scale(1); }
+  to { transform: scale(1.08); }
+}
+.animate-slow-zoom {
+  animation: slow-zoom 20s infinite alternate ease-in-out;
+}
+
+@keyframes title-reveal {
+  0% { 
+    opacity: 0; 
+    filter: blur(16px); 
+    transform: translateY(30px) scale(0.95); 
+    letter-spacing: -0.05em;
+  }
+  100% { 
+    opacity: 1; 
+    filter: blur(0px); 
+    transform: translateY(0) scale(1); 
+    letter-spacing: normal;
+  }
+}
+.animate-title-reveal {
+  animation: title-reveal 2.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .floating-3d,
+  .animate-spin-ring,
+  .animate-gentle-rotate,
+  .animate-fade-up {
+    animation: none;
+  }
+}
+
+/* --- Shared surface + control language ----------------------------- */
+
+@utility surface {
+  background: rgba(251, 248, 242, 0.75);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--color-line);
+  box-shadow: var(--shadow-soft);
+}
+
+/* The asymmetric corner treatment that gives the design its character. */
+@utility r-organic {
+  border-radius: 32px 12px 32px 12px;
+}
+@utility r-organic-lg {
+  border-radius: 48px 24px 48px 24px;
+}
+@utility r-organic-xl {
+  border-radius: 70px 24px 70px 24px;
+}
+
+@utility btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  background: var(--color-brand-600);
+  padding: 0.75rem 1.75rem;
+  font-weight: 600;
+  color: #fefaf5;
+  box-shadow: 0 10px 20px rgba(30, 77, 59, 0.3);
+  transition: all 0.3s cubic-bezier(0.2, 0.9, 0.3, 1.2);
+}
+.btn-primary:hover:not(:disabled) {
+  background: var(--color-brand-800);
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 18px 30px rgba(30, 77, 59, 0.4);
+}
+.btn-primary:disabled {
+  opacity: 0.5;
+}
+
+@utility btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.6);
+  border: 1.5px solid var(--color-gold-400);
+  padding: 0.75rem 1.75rem;
+  font-weight: 600;
+  color: var(--color-wood);
+  backdrop-filter: blur(8px);
+  transition: all 0.3s cubic-bezier(0.2, 0.9, 0.3, 1.2);
+}
+.btn-outline:hover:not(:disabled) {
+  background: #fdf3d9;
+  transform: translateY(-4px);
+}
+.btn-outline:disabled {
+  opacity: 0.5;
+}
+
+@utility field {
+  width: 100%;
+  border-radius: 0.75rem;
+  border: 1px solid var(--color-line);
+  background: rgba(255, 255, 255, 0.7);
+  padding: 0.6rem 0.85rem;
+  color: var(--color-earth);
+  transition: all 0.2s;
+}
+.field:focus {
+  outline: none;
+  border-color: var(--color-gold-400);
+  box-shadow: 0 0 0 3px rgba(212, 167, 60, 0.18);
+}
+
+@utility chip {
+  border-radius: 9999px;
+  border: 1px solid var(--color-line);
+  background: var(--color-sand);
+  padding: 0.3rem 0.85rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-brand-800);
+  transition: all 0.25s;
+}
+.chip:hover {
+  background: #fff;
+  border-color: var(--color-gold-400);
+}
+
+@utility chip-active {
+  border-radius: 9999px;
+  border: 1px solid var(--color-brand-600);
+  background: var(--color-brand-600);
+  padding: 0.3rem 0.85rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #fefaf5;
+  transition: all 0.25s;
+}

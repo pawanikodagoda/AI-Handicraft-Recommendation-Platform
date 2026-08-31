@@ -1,0 +1,11 @@
+fastapi>=0.115
+uvicorn[standard]>=0.30
+pydantic>=2.7
+python-multipart>=0.0.9
+mediapipe>=0.10.14
+opencv-python>=4.9
+pillow>=10.0
+numpy>=1.26
+requests>=2.31
+rembg>=2.0.81
+onnxruntime>=1.29
