@@ -27,9 +27,7 @@ export default function Navbar() {
       <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 px-6 py-4 lg:px-8">
         {/* Brand Logo */}
         <Link to="/" className="flex items-center gap-3 group">
-          <div className="relative flex items-center justify-center w-10 h-10 rounded-full bg-brand-900 border border-brand-800 group-hover:bg-gold-500 transition-colors duration-300 shadow-md">
-            <i aria-hidden="true" className="fa-solid fa-gem text-lg text-gold-400 group-hover:text-white drop-shadow-sm transition-colors duration-300" />
-          </div>
+
           <span className="font-display text-3xl font-medium tracking-tight text-brand-900 group-hover:text-brand-700 transition-colors">
             Cey<span className="font-light italic text-gold-600">Crafts</span>
           </span>
