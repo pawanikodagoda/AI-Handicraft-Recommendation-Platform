@@ -12,9 +12,6 @@ export default function Onboarding() {
   const [colors, setColors] = useState([])
   const [materials, setMaterials] = useState([])
   const [styles, setStyles] = useState([])
-  const [occasion, setOccasion] = useState('')
-  const [budgetMin, setBudgetMin] = useState('')
-  const [budgetMax, setBudgetMax] = useState('')
   const [saving, setSaving] = useState(false)
 
   function toggle(list, setList, value) {
@@ -28,9 +25,6 @@ export default function Onboarding() {
         colors,
         materials,
         styles,
-        occasion: occasion || null,
-        budget_min: budgetMin || null,
-        budget_max: budgetMax || null,
       })
       navigate('/')
     } finally {
@@ -54,44 +48,6 @@ export default function Onboarding() {
           onToggle={(v) => toggle(materials, setMaterials, v)}
         />
         <ChipGroup title="Style" options={STYLES} selected={styles} onToggle={(v) => toggle(styles, setStyles, v)} />
-
-        <div>
-          <h3 className="mb-2.5 font-display text-lg font-semibold text-brand-700">Occasion</h3>
-          <div className="flex flex-wrap gap-2">
-            {OCCASIONS.map((o) => (
-              <button
-                key={o}
-                onClick={() => setOccasion(occasion === o ? '' : o)}
-                className={`${occasion === o ? 'chip-active' : 'chip'} !px-4 !py-1.5 !text-sm`}
-              >
-                {o}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        <div>
-          <h3 className="mb-2.5 font-display text-lg font-semibold text-brand-700">Budget (LKR)</h3>
-          <div className="flex items-center gap-3">
-            <input
-              type="number"
-              aria-label="Minimum budget"
-              placeholder="Min"
-              value={budgetMin}
-              onChange={(e) => setBudgetMin(e.target.value)}
-              className="field !w-32"
-            />
-            <span className="text-brand-300">–</span>
-            <input
-              type="number"
-              aria-label="Maximum budget"
-              placeholder="Max"
-              value={budgetMax}
-              onChange={(e) => setBudgetMax(e.target.value)}
-              className="field !w-32"
-            />
-          </div>
-        </div>
       </div>
 
       <div className="mt-10 flex flex-wrap items-center gap-4">

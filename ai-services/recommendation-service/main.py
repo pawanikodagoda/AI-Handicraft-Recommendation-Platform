@@ -28,11 +28,9 @@ app.add_middleware(
 
 # Relative importance of each signal when a customer has preferences set.
 WEIGHTS = {
-    "color": 0.30,
-    "material": 0.25,
+    "color": 0.40,
+    "material": 0.40,
     "style": 0.20,
-    "budget": 0.15,
-    "occasion": 0.10,
 }
 
 
@@ -40,9 +38,6 @@ class Preferences(BaseModel):
     colors: List[str] = []
     materials: List[str] = []
     styles: List[str] = []
-    occasion: Optional[str] = None
-    budget_min: Optional[float] = None
-    budget_max: Optional[float] = None
 
 
 class Product(BaseModel):
@@ -81,38 +76,15 @@ def _overlap_ratio(wanted: List[str], has: List[str]) -> float:
     return len(wanted_set & has_set) / len(wanted_set)
 
 
-def _budget_score(prefs: Preferences, price: float) -> float:
-    lo, hi = prefs.budget_min, prefs.budget_max
-    if lo is None and hi is None:
-        return 0.5  # neutral - no budget stated
-    lo = lo if lo is not None else 0
-    hi = hi if hi is not None else lo + max(lo, 1) * 4
-    if lo <= price <= hi:
-        return 1.0
-    span = max(hi - lo, 1.0)
-    distance = (lo - price) if price < lo else (price - hi)
-    return max(0.0, 1.0 - (distance / span))
-
-
-def _occasion_score(prefs: Preferences, style_tags: List[str]) -> float:
-    if not prefs.occasion:
-        return 0.0
-    return 1.0 if prefs.occasion.lower() in {t.lower() for t in style_tags} else 0.0
-
-
 def _score_personalized(prefs: Preferences, product: Product) -> float:
     color_s = _overlap_ratio(prefs.colors, product.colors)
     material_s = _overlap_ratio(prefs.materials, product.materials)
     style_s = _overlap_ratio(prefs.styles, product.style_tags)
-    budget_s = _budget_score(prefs, product.price)
-    occasion_s = _occasion_score(prefs, product.style_tags)
 
     return (
         WEIGHTS["color"] * color_s
         + WEIGHTS["material"] * material_s
         + WEIGHTS["style"] * style_s
-        + WEIGHTS["budget"] * budget_s
-        + WEIGHTS["occasion"] * occasion_s
     )
 
 
@@ -148,9 +120,6 @@ def recommend(payload: RecommendRequest):
             payload.preferences.colors,
             payload.preferences.materials,
             payload.preferences.styles,
-            payload.preferences.occasion,
-            payload.preferences.budget_min,
-            payload.preferences.budget_max,
         ]
     )
 

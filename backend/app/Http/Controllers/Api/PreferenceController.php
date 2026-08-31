@@ -26,9 +26,6 @@ class PreferenceController extends Controller
             'materials.*' => ['string', 'max:100'],
             'styles' => ['sometimes', 'array'],
             'styles.*' => ['string', 'max:100'],
-            'occasion' => ['sometimes', 'nullable', 'string', 'max:100'],
-            'budget_min' => ['sometimes', 'nullable', 'numeric', 'min:0'],
-            'budget_max' => ['sometimes', 'nullable', 'numeric', 'min:0'],
         ]);
 
         $preference = $request->user()->preference()->updateOrCreate(

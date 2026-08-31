@@ -35,9 +35,6 @@ class RecommendationService
                 'colors' => $preference->colors ?? [],
                 'materials' => $preference->materials ?? [],
                 'styles' => $preference->styles ?? [],
-                'occasion' => $preference->occasion,
-                'budget_min' => $preference->budget_min ? (float) $preference->budget_min : null,
-                'budget_max' => $preference->budget_max ? (float) $preference->budget_max : null,
             ];
         }
 
