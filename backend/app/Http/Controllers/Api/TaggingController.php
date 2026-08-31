@@ -18,7 +18,7 @@ class TaggingController extends Controller
     public function suggest(Request $request)
     {
         $data = $request->validate([
-            'title' => ['sometimes', 'string', 'max:255'],
+            'title' => ['nullable', 'string', 'max:255'],
             'description' => ['required', 'string', 'max:2000'],
         ]);
 

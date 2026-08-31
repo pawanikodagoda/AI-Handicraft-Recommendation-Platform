@@ -69,13 +69,16 @@ export default function ProductForm({ mode }) {
   async function handleSuggest() {
     if (!description.trim()) return
     setSuggesting(true)
+    setError('')
     try {
       const data = await suggestTags({ title, description })
-      setCategory(data.category)
-      setMaterials(data.materials)
-      setColors(data.colors)
-      setStyleTags(data.style_tags)
+      if (data.category && !category) setCategory(data.category)
+      setMaterials(prev => Array.from(new Set([...prev, ...(data.materials || [])])))
+      setColors(prev => Array.from(new Set([...prev, ...(data.colors || [])])))
+      setStyleTags(prev => Array.from(new Set([...prev, ...(data.style_tags || [])])))
       setSuggested(true)
+    } catch (err) {
+      setError('Could not generate tags. Please check your connection or try again.')
     } finally {
       setSuggesting(false)
     }
