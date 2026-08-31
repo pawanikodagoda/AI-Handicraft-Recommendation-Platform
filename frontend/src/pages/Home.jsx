@@ -196,8 +196,8 @@ export default function Home() {
       {/* ---------------- browse by category ---------------- */}
       {shownCategories.length > 0 && (
         <section className="mx-auto max-w-6xl px-4 pt-16">
-          <h2 className="mb-8 font-display text-3xl font-semibold text-brand-800 capitalize tracking-wide flex justify-center items-center gap-3">
-            <i aria-hidden="true" className="fa-solid fa-layer-group text-gold-500"></i> Shop by Category
+          <h2 className="mb-8 font-display text-3xl font-semibold text-brand-800 tracking-wide flex justify-center items-center gap-3">
+            <i aria-hidden="true" className="fa-solid fa-shapes text-gold-500"></i> Shop by category
           </h2>
           <div className="flex flex-wrap gap-5">
             {shownCategories.map((c) => {
@@ -238,8 +238,8 @@ export default function Home() {
             
             {validColors.length > 0 && (
               <div>
-                <h2 className="mb-6 font-display text-3xl font-semibold text-brand-800 uppercase tracking-widest flex items-center justify-center gap-3">
-                  <i aria-hidden="true" className="fa-solid fa-palette text-gold-500 text-lg"></i> Shop by Colour
+                <h2 className="mb-6 font-display text-3xl font-semibold text-brand-800 tracking-widest flex items-center justify-center gap-3">
+                  <i aria-hidden="true" className="fa-solid fa-palette text-gold-500"></i> Shop by colour
                 </h2>
                 <div className="flex flex-wrap justify-center gap-6 pb-8">
                   {validColors.map((c) => (
@@ -258,8 +258,8 @@ export default function Home() {
 
             {validMaterials.length > 0 && (
               <div>
-                <h2 className="mb-6 font-display text-3xl font-semibold text-brand-800 uppercase tracking-widest flex items-center justify-center gap-3">
-                  <i aria-hidden="true" className="fa-solid fa-layer-group text-gold-500 text-lg"></i> Shop by Material
+                <h2 className="mb-6 font-display text-3xl font-semibold text-brand-800 tracking-widest flex items-center justify-center gap-3">
+                  <i aria-hidden="true" className="fa-solid fa-gem text-gold-500"></i> Shop by material
                 </h2>
                 <div className="flex flex-wrap justify-center gap-3">
                   {validMaterials.map((m) => {
@@ -288,7 +288,7 @@ export default function Home() {
       <section className="mx-auto max-w-6xl px-4 pt-14">
         <div className="mb-8 flex flex-col items-center gap-2">
           <h2 className="font-display text-3xl font-semibold text-brand-800 tracking-wide flex justify-center items-center gap-3">
-            <i aria-hidden="true" className="fa-solid fa-fire text-gold-500"></i> {feed.personalized ? 'Picked for You' : 'New & Popular'}
+            <i aria-hidden="true" className="fa-solid fa-fire text-gold-500"></i> {feed.personalized ? 'Picked for you' : 'New & popular'}
           </h2>
           {feed.personalized ? (
             <Link to="/onboarding" className="text-sm font-semibold text-gold-500 hover:underline">
