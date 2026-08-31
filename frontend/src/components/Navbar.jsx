@@ -25,13 +25,6 @@ export default function Navbar() {
       </div>
 
       <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 px-6 py-4 lg:px-8">
-        {/* Brand Logo */}
-        <Link to="/" className="flex items-center gap-3 group">
-
-          <span className="font-display text-3xl font-medium tracking-tight text-brand-900 group-hover:text-brand-700 transition-colors">
-            Cey<span className="font-light italic text-gold-600">Crafts</span>
-          </span>
-        </Link>
 
         {/* Navigation Links */}
         <nav className="flex items-center gap-5 sm:gap-7 text-sm">
