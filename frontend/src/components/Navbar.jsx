@@ -24,7 +24,7 @@ export default function Navbar() {
         Free shipping on all orders over LKR 10,000
       </div>
 
-      <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 px-6 py-4 lg:px-8">
+      <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-end gap-4 px-6 py-4 lg:px-8">
 
         {/* Navigation Links */}
         <nav className="flex items-center gap-5 sm:gap-7 text-sm">
