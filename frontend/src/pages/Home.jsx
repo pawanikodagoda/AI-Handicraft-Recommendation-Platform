@@ -400,7 +400,7 @@ export default function Home() {
                 to="/seller/products/new"
                 className="btn-outline !border-gold-200 !bg-cream/10 !text-cream hover:!bg-cream/20"
               >
-                <i aria-hidden="true" className="fa-solid fa-plus" /> add a product
+                <i aria-hidden="true" className="fa-solid fa-plus" /> Add a product
               </Link>
             ) : (
               <>

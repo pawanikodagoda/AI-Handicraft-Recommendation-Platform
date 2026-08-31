@@ -169,7 +169,7 @@ export default function ProductForm({ mode }) {
     <div className="mx-auto max-w-7xl px-4 py-10">
       <div className="mb-8">
         <h1 className="font-display text-4xl font-semibold text-brand-600">
-          {isEdit ? 'edit product' : 'add a product'}
+          {isEdit ? 'Edit product' : 'Add a product'}
         </h1>
         <p className="mt-2 text-wood/80">
           Describe your piece naturally — we'll suggest the category, materials, colours and tags for you to review.
