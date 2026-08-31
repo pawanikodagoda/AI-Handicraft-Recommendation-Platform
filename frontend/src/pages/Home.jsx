@@ -196,7 +196,9 @@ export default function Home() {
       {/* ---------------- browse by category ---------------- */}
       {shownCategories.length > 0 && (
         <section className="mx-auto max-w-6xl px-4 pt-16">
-          <h2 className="mb-8 font-display text-3xl font-semibold text-brand-800 capitalize tracking-wide">Shop by Category</h2>
+          <h2 className="mb-8 font-display text-3xl font-semibold text-brand-800 capitalize tracking-wide flex justify-center items-center gap-3">
+            <i aria-hidden="true" className="fa-solid fa-layer-group text-gold-500"></i> Shop by Category
+          </h2>
           <div className="flex flex-wrap gap-5">
             {shownCategories.map((c) => {
               const inCategory = feed.data.filter((p) => p.category?.id === c.id)
@@ -284,9 +286,9 @@ export default function Home() {
 
       {/* ---------------- feed ---------------- */}
       <section className="mx-auto max-w-6xl px-4 pt-14">
-        <div className="mb-6 flex flex-wrap items-end justify-between gap-3">
-          <h2 className="font-display text-3xl font-semibold text-brand-800 capitalize tracking-wide">
-            {feed.personalized ? 'Picked for You' : 'New & Popular'}
+        <div className="mb-8 flex flex-col items-center gap-2">
+          <h2 className="font-display text-3xl font-semibold text-brand-800 tracking-wide flex justify-center items-center gap-3">
+            <i aria-hidden="true" className="fa-solid fa-fire text-gold-500"></i> {feed.personalized ? 'Picked for You' : 'New & Popular'}
           </h2>
           {feed.personalized ? (
             <Link to="/onboarding" className="text-sm font-semibold text-gold-500 hover:underline">
