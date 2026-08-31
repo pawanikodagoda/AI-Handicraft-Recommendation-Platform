@@ -236,10 +236,10 @@ export default function Home() {
             
             {validColors.length > 0 && (
               <div>
-                <h2 className="mb-6 font-display text-2xl font-semibold text-brand-800 uppercase tracking-widest flex items-center gap-3">
+                <h2 className="mb-6 font-display text-2xl font-semibold text-brand-800 uppercase tracking-widest flex items-center justify-center gap-3">
                   <i aria-hidden="true" className="fa-solid fa-palette text-gold-500 text-lg"></i> Shop by Colour
                 </h2>
-                <div className="flex flex-wrap gap-5 pb-8">
+                <div className="flex flex-wrap justify-center gap-5 pb-8">
                   {validColors.map((c) => (
                     <Link
                       key={c}
