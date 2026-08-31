@@ -1,4 +1,4 @@
-# Pawani Akka Bracelets — AI-Powered Handmade Marketplace
+# CeyCrafts — AI-Powered Handmade Marketplace
 
 Phase 1 implementation of the marketplace described in
 `Client_Proposal_Handmade_Bracelet_Marketplace.pdf`: a React + Laravel + MySQL
