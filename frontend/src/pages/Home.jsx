@@ -239,7 +239,7 @@ export default function Home() {
                 <h2 className="mb-6 font-display text-2xl font-semibold text-brand-800 uppercase tracking-widest flex items-center justify-center gap-3">
                   <i aria-hidden="true" className="fa-solid fa-palette text-gold-500 text-lg"></i> Shop by Colour
                 </h2>
-                <div className="flex flex-wrap justify-center gap-5 pb-8">
+                <div className="flex flex-wrap justify-center gap-6 pb-8">
                   {validColors.map((c) => (
                     <Link
                       key={c}
@@ -247,7 +247,7 @@ export default function Home() {
                       className="group relative flex flex-col items-center"
                     >
                       <div className={`w-14 h-14 rounded-full shadow-sm border group-hover:scale-110 group-hover:shadow-md transition-all duration-300 ${PREMIUM_COLORS[c.toLowerCase()]}`}></div>
-                      <span className="absolute top-full mt-2.5 left-1/2 -translate-x-1/2 text-xs font-semibold text-wood/80 group-hover:text-brand-800 transition-colors whitespace-nowrap">{c}</span>
+                      <span className="mt-2.5 text-xs font-semibold text-wood/80 group-hover:text-brand-800 transition-colors whitespace-nowrap">{c}</span>
                     </Link>
                   ))}
                 </div>
